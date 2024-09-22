@@ -24,4 +24,4 @@ sudo systemctl enable wg-quick@wg0.service
 sudo systemctl start wg-quick@wg0.service
 sudo systemctl status wg-quick@wg0.service
 
-sudo wg set wg0 peer rC3tJiKl2bGmncIVD5Q3zO8r6P6zaJoqzqIRI3VBYlQ= allowed-ips 10.8.0.2
+sudo wg set wg0 peer rC3tJiKl2bGmncIVD5Q3zO8r6P6zaJoqzqIRI3VBYl= allowed-ips 10.8.0.2
