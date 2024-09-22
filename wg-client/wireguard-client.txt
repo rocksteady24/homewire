@@ -1,20 +1,20 @@
 sudo apt install wireguard
 wg genkey | sudo tee /etc/wireguard/private.key
-IIXcsdPjujmGBZcbwuW/xD55pBkPS/mQ/0y9TNGDEEg=
+IIXcsdPjujmGBZcbwuW/xD55pBkPS/mQ/0y9TNGDEE=
 sudo chmod go= /etc/wireguard/private.key
 sudo cat /etc/wireguard/private.key | wg pubkey | sudo tee /etc/wireguard/public.key
-rC3tJiKl2bGmncIVD5Q3zO8r6P6zaJoqzqIRI3VBYlQ=
+rC3tJiKl2bGmncIVD5Q3zO8r6P6zaJoqzqIRI3VBYl=
 
 sudo nano /etc/wireguard/wg0.conf
 [Interface]
-PrivateKey = IIXcsdPjujmGBZcbwuW/xD55pBkPS/mQ/0y9TNGDEEg=
+PrivateKey = IIXcsdPjujmGBZcbwuW/xD55pBkPS/mQ/0y9TNGDEE=
 Address = 10.8.0.2/24
 ListenPort = 58229
 DNS = 1.1.1.1
 PreUp = /etc/wireguard/pre-up.sh
 
 [Peer]
-PublicKey = U0N4F98ZRCsZXll079ARwImC0du0U0B89dmN8fBU/Vg=
+PublicKey = U0N4F98ZRCsZXll079ARwImC0du0U0B89dmN8fBU/V=
 AllowedIPs = 0.0.0.0/0
 Endpoint = 185.200.190.62:58228
 PersistentKeepalive = 60
