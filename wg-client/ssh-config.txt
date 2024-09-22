@@ -14,7 +14,7 @@ Host *
   ForwardAgent yes
 
 Host vps
-  HostName 185.200.190.62
+  HostName 185.200.190.61
   PasswordAuthentication no
   IdentityFile ~/.ssh/vps
   ForwardAgent yes
