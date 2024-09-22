@@ -1,0 +1,27 @@
+sudo apt install wireguard
+wg genkey | sudo tee /etc/wireguard/private.key
+oGzI8EVUq1R0cT/xj5h1IOcFecAea+jEeZXymHmB7l4=
+sudo chmod go= /etc/wireguard/private.key
+sudo cat /etc/wireguard/private.key | wg pubkey | sudo tee /etc/wireguard/public.key
+U0N4F98ZRCsZXll079ARwImC0du0U0B89dmN8fBU/Vg=
+
+sudo nano /etc/wireguard/wg0.conf
+
+[Interface]
+Address = 10.8.0.1/24
+SaveConfig = true
+PostUp = /etc/wireguard/post-up.sh
+PostDown = /etc/wireguard/post-down.sh
+ListenPort = 58228
+PrivateKey = oGzI8EVUq1R0cT/xj5h1IOcFecAea+jEeZXymHmB7l4=
+
+[Peer]
+PublicKey = rC3tJiKl2bGmncIVD5Q3zO8r6P6zaJoqzqIRI3VBYlQ=
+AllowedIPs = 10.8.0.2/32
+Endpoint = 109.252.17.155:1591
+
+sudo systemctl enable wg-quick@wg0.service
+sudo systemctl start wg-quick@wg0.service
+sudo systemctl status wg-quick@wg0.service
+
+sudo wg set wg0 peer rC3tJiKl2bGmncIVD5Q3zO8r6P6zaJoqzqIRI3VBYlQ= allowed-ips 10.8.0.2

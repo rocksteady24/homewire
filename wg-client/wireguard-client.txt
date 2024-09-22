@@ -1,0 +1,35 @@
+sudo apt install wireguard
+wg genkey | sudo tee /etc/wireguard/private.key
+IIXcsdPjujmGBZcbwuW/xD55pBkPS/mQ/0y9TNGDEEg=
+sudo chmod go= /etc/wireguard/private.key
+sudo cat /etc/wireguard/private.key | wg pubkey | sudo tee /etc/wireguard/public.key
+rC3tJiKl2bGmncIVD5Q3zO8r6P6zaJoqzqIRI3VBYlQ=
+
+sudo nano /etc/wireguard/wg0.conf
+[Interface]
+PrivateKey = IIXcsdPjujmGBZcbwuW/xD55pBkPS/mQ/0y9TNGDEEg=
+Address = 10.8.0.2/24
+ListenPort = 58229
+DNS = 1.1.1.1
+PreUp = /etc/wireguard/pre-up.sh
+
+[Peer]
+PublicKey = U0N4F98ZRCsZXll079ARwImC0du0U0B89dmN8fBU/Vg=
+AllowedIPs = 0.0.0.0/0
+Endpoint = 185.200.190.62:58228
+PersistentKeepalive = 60
+
+# Allow traffic from the local network to wg0
+sudo iptables -A FORWARD -i wg0 -o eth0 -j ACCEPT
+sudo iptables -A FORWARD -i eth0 -o wg0 -j ACCEPT
+
+# MASQUERADE the traffic going out of wg0
+sudo iptables -t nat -A POSTROUTING -o wg0 -j MASQUERADE
+
+# Making iptables rules persistent
+sudo apt install iptables-persistent
+sudo netfilter-persistent save
+
+# Optimizing MTU setting
+ping -M do -s 1392 10.8.0.1
+sudo ip link set wg0 mtu 1392

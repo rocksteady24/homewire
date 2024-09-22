@@ -1,0 +1,21 @@
+~/.ssh/config 
+
+Host *
+  Port 22
+  SetEnv TERM=xterm-256color
+  Ciphers aes128-ctr,aes192-ctr,aes256-ctr
+  Compression yes
+  PasswordAuthentication yes
+  StrictHostKeyChecking no
+  ControlMaster auto
+  ControlPath ~/.ssh/sockets/%r@%h-%p
+  ControlPersist 600
+  IdentityFile ~/.ssh/timba
+  ForwardAgent yes
+
+Host vps
+  HostName 185.200.190.62
+  PasswordAuthentication no
+  IdentityFile ~/.ssh/vps
+  ForwardAgent yes
+  PermitLocalCommand yes
