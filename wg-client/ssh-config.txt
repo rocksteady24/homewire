@@ -1,5 +1,3 @@
-~/.ssh/config 
-
 Host *
   Port 22
   SetEnv TERM=xterm-256color
@@ -9,12 +7,12 @@ Host *
   StrictHostKeyChecking no
   ControlMaster auto
   ControlPath ~/.ssh/sockets/%r@%h-%p
-  ControlPersist 600
-  IdentityFile ~/.ssh/timba
+  ControlPersist 300
+  IdentityFile ~/.ssh/id_rsa
   ForwardAgent yes
 
-Host vps
-  HostName 185.200.190.61
+Host wg-vps
+  HostName <ip-address>
   PasswordAuthentication no
   IdentityFile ~/.ssh/vps
   ForwardAgent yes

@@ -1,5 +1,6 @@
 sudo nano /etc/systemd/system/wireproxy.service
 
+##
 [Unit]
 Description=wireproxy
 After=network.target
@@ -9,8 +10,8 @@ ExecStart=/usr/local/bin/wireproxy -c /etc/wireguard/wproxy.conf
 Restart=on-failure
 [Install]
 WantedBy=multi-user.target
+##
 
 sudo systemctl daemon-reload
 sudo systemctl enable wireproxy.service
 sudo systemctl status wireproxy.service
-

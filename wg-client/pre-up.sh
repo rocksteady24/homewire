@@ -1,6 +1,6 @@
 #!/bin/bash
 
-wgIP='185.200.190.62'
+wgIP='ip'
 wgPORT=58228
 wgListenPort=58229
 
