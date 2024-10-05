@@ -1,0 +1,3 @@
+sudo apt install ipset
+sudo ipset create ru_zone hash:net
+wget -O - https://www.ipdeny.com/ipblocks/data/countries/ru.zone | sudo ipset add ru_zone -exist

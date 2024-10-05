@@ -1,3 +1,5 @@
+sysctl -w net.ipv4.ip_forward=1
+sysctl -p
 iptables-restore < iptables-vps.txt
 sudo apt install wireguard iptables-persistent
 wg genkey | sudo tee /etc/wireguard/private.key

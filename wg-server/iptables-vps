@@ -6,7 +6,7 @@
 -A INPUT -i lo -j ACCEPT
 -A INPUT -s 127.0.0.0/8 -j DROP
 -A INPUT -p tcp -m tcp --dport 22 -m state --state NEW -j ACCEPT
--A INPUT -p udp --dport 58228 -m state --state NEW -j ACCEPT
+-A INPUT -p udp --dport 58300 -m state --state NEW -j ACCEPT
 -A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
 -A INPUT -p icmp --icmp-type echo-request -j ACCEPT
 -A INPUT -j LOG --log-prefix "iptables dropped: " --log-level 7
